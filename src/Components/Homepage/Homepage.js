@@ -3,49 +3,34 @@ import { Button, Container, Form, FormControl, Navbar } from 'react-bootstrap';
 import './Homepage.css';
 
 import logo from '../../Images/Logo.png';
+import { Link } from 'react-router-dom';
+
 
 
 const Homepage = () => {
     return (
+       
+            <Container>
 
+                <Navbar variant="dark">
+                    <Navbar.Brand href="#home"><img className="logo" src={logo} alt="" /></Navbar.Brand>
 
-
-        <section className="homepage">
-             
-
-            <div className='background'></div>
-            <>
-                    <Container>
-
-                   <Navbar variant="dark">
-                        <Navbar.Brand href="#home"><img className="logo" src={logo} alt=""/></Navbar.Brand>
-                       
-                        <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Collapse id="basic-navbar-nav">
 
 
                         <Form inline>
-                        <FormControl variant='white' type="text" placeholder="Search Your Destination...." className="mr-sm-2" />
+                            <FormControl variant='white' type="text" placeholder="Search Your Destination...." className="mr-sm-2" />
                         </Form>
-                            
-                            <Navbar.Brand className='ml-5' href="#home">News</Navbar.Brand>
-                            <Navbar.Brand className='ml-5' href="#home">Destination</Navbar.Brand>
-                            <Navbar.Brand className='ml-5' href="#home">Blog</Navbar.Brand>
-                            <Navbar.Brand className='ml-5' href="#home">Contact</Navbar.Brand>
-                            <Button className='button'>Login</Button>                            
-                        </Navbar.Collapse>
-                    </Navbar>
 
+                        <Link className='ml-5' to="home">News</Link>
+                        <Link className='ml-5' to="destination">Destination</Link>
+                        <Link className='ml-5' to="blog">Blog</Link>
+                        <Link className='ml-5' to="contact">Contact</Link>
+                        <Button className='button'>Login</Button>
+                    </Navbar.Collapse>
+                </Navbar>
 
-                    </Container>
-
-                </>    
-               
-
-                
-
-            
-        </section>
-
+            </Container>
 
     );
 };

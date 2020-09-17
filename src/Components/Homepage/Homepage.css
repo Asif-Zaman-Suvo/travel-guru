@@ -1,25 +1,7 @@
-.homepage{
-    background:url(../../Images/Image/Rectangle\ 1.png);
-    background-repeat:no-repeat;
-    background-position:center;
-    background-size:cover;
-    position: relative;
-    height:100vh;
-}
-
-.background{
-    width:100%;
-    height: 100%;
-    background:black;
-    opacity:0.5;
-    position: absolute;
-    
-
-}
 
 .logo{
     width: 150px; 
-    filter: brightness(100);
+    filter: brightness(800);
    
     
 }
@@ -65,7 +47,13 @@
 ::-webkit-input-placeholder{
     color:white !important;
  }
+
+ .ml-5{
+     color: white;
+ }
+
+ .ml-5:hover{
+     color: white;
+     text-decoration:none;
+ }
  
-
-
-
