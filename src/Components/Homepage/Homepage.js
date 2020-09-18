@@ -26,7 +26,7 @@ const Homepage = () => {
                         <Link className='ml-5' to="destination">Destination</Link>
                         <Link className='ml-5' to="blog">Blog</Link>
                         <Link className='ml-5' to="contact">Contact</Link>
-                        <Button className='button'>Login</Button>
+                        <Link to='/login'><Button className='button'>Login</Button></Link>
                     </Navbar.Collapse>
                 </Navbar>
 

@@ -9,6 +9,7 @@ import {
 import './App.css';
 import Body from "./Components/Body/Body";
 import Booking from "./Components/Booking/Booking";
+import HotelDetails from "./Components/HotelDetails/HotelDetails";
 
 import LogIn from "./Components/LogIn/LogIn";
 import NotFound from "./Components/NotFound/NotFound";
@@ -44,15 +45,24 @@ function App() {
 
         </Route>
 
+        
+
+        <Route exact path='/hotelDetails'>
+          <HotelDetails></HotelDetails>
+
+        </Route>
+
         <Route path='/login'>
           <LogIn></LogIn>
 
         </Route>
 
+
         <Route path='*'>
           <NotFound></NotFound>
         </Route>
 
+        
       </Switch>
 
 
