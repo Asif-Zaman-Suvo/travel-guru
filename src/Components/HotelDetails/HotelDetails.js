@@ -1,11 +1,90 @@
 import React from 'react';
+import { Button, Col, Container, Navbar, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import logo from '../../Images/Logo.png';
+import './HotelDetails.css';
+import HotelData from "./HotelData";
+import Hotels from './Hotels';
+import GoogleMap from '../GoogleMap/GoogleMap';
 
 const HotelDetails = () => {
+
+
     return (
-        <div>
-            <h1>This is hotel Details</h1>
-            
-        </div>
+
+
+        <section className='hotelDetails'>
+            <br></br>
+
+            <Container>
+
+                <Row>
+                    <Col lg={6}>
+
+
+                        <Navbar.Brand to="/"><img className="logoLogin" src={logo} alt="" /></Navbar.Brand>
+                    </Col>
+
+                    <Col lg={6}>
+
+                        <Navbar variant="dark">
+
+
+                            <Navbar.Collapse id="basic-navbar-nav">
+
+                                <Link className='hotelNav ml-5' to="home">News</Link>
+                                <Link className='hotelNav ml-5' to="destination">Destination</Link>
+                                <Link className='hotelNav ml-5' to="blog">Blog</Link>
+                                <Link className='hotelNav ml-5' to="contact">Contact</Link>
+                                <Link to='/login'><Button className='button'>Login</Button></Link>
+                            </Navbar.Collapse>
+                        </Navbar>
+
+
+                    </Col>
+
+                </Row>
+
+                <hr></hr>
+
+
+
+            </Container>
+
+            <Container>
+                <Row> 
+
+                    <Col md={7}>
+
+                        {
+                            HotelData.map(hotel=> <Hotels hotel={hotel}></Hotels>)
+
+                        }
+
+
+                    </Col>
+                    <Col md={5}>
+
+                        <div className='container'> 
+                        <GoogleMap></GoogleMap>
+
+
+                        </div>
+
+
+
+                    </Col>
+
+
+
+
+                </Row>
+
+
+
+            </Container>
+
+        </section>
     );
 };
 

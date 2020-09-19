@@ -22,10 +22,10 @@ const Homepage = () => {
                             <FormControl variant='white' type="text" placeholder="Search Your Destination...." className="mr-sm-2" />
                         </Form>
 
-                        <Link className='ml-5' to="home">News</Link>
-                        <Link className='ml-5' to="destination">Destination</Link>
-                        <Link className='ml-5' to="blog">Blog</Link>
-                        <Link className='ml-5' to="contact">Contact</Link>
+                        <Link className='navBar ml-5' to="home">News</Link>
+                        <Link className='navBar ml-5' to="destination">Destination</Link>
+                        <Link className='navBar ml-5' to="blog">Blog</Link>
+                        <Link className='navBar ml-5' to="contact">Contact</Link>
                         <Link to='/login'><Button className='button'>Login</Button></Link>
                     </Navbar.Collapse>
                 </Navbar>

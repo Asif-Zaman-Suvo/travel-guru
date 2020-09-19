@@ -56,7 +56,7 @@ const Booking = () => {
                             </div>
                             <br/>
                            
-                            <Link to ='/login'><button type="submit" className="btn btn-warning btn-block">Submit</button> </Link>
+                            <Link to ='/hotelDetails'><button type="submit" className="btn btn-warning btn-block">Submit</button> </Link>
                         </form>
                     </Col> 
 
