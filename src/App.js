@@ -13,6 +13,7 @@ import HotelDetails from "./Components/HotelDetails/HotelDetails";
 
 import LogIn from "./Components/LogIn/LogIn";
 import NotFound from "./Components/NotFound/NotFound";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 
 export const UserContext=createContext()
@@ -45,12 +46,17 @@ function App() {
 
         </Route>
 
-        
-
-        <Route exact path='/hotelDetails'>
-          <HotelDetails></HotelDetails>
+        <Route path='/login'>
+          <LogIn></LogIn>
 
         </Route>
+
+        
+
+        <PrivateRoute exact path='/hotelDetails'>
+          <HotelDetails></HotelDetails>
+
+        </PrivateRoute>
 
         
 

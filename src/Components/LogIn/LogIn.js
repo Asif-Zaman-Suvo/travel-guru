@@ -12,6 +12,8 @@ import facebookLogo from '../../Images/fbLogo.png';
 
 const LogIn = () => {
 
+
+
     const [newUser, setNewUser] = useState(false)
 
     const [user, setUser] = useState({
@@ -38,14 +40,14 @@ const LogIn = () => {
     const googleSignIn = () => {
         handleGoogleSignIn()
             .then(res => {
-                handleResponse(res, true)
+                handleResponse(res, true);
             })
     }
 
     const fbSignIn = () => {
         handleFbSignIn()
             .then(res => {
-                handleResponse(res, true)
+                handleResponse(res, true);
             })
 
 
@@ -54,11 +56,12 @@ const LogIn = () => {
     const signOut = () => {
         handleSignOut()
             .then(res => {
-                handleResponse(res, false)
+                handleResponse(res, false);
             })
     }
 
     const handleResponse = (res, redirect) => {
+        console.log(res, from)
         setUser(res);
         setLoggedInUser(res);
 
@@ -66,6 +69,12 @@ const LogIn = () => {
             history.replace(from)
 
         }
+
+
+        if (!user.error) {
+            redirect = true
+        }
+
 
     }
 
@@ -109,18 +118,22 @@ const LogIn = () => {
 
 
     const handleSubmit = (event) => {
-
+        event.preventDefault();
+        console.log(user, newUser)
 
         if (newUser && user.email && user.password) {
             createUserWithEmailAndPassword(user.name, user.email, user.password)
                 .then(res => {
+                    console.log(res);
                     handleResponse(res, true)
+
                 })
 
 
 
         }
         if (!newUser && user.email && user.password) {
+            console.log("old user")
             signInWithEmailAndPassword(user.email, user.password)
                 .then(res => {
                     handleResponse(res, true)
@@ -130,7 +143,7 @@ const LogIn = () => {
 
         }
 
-        event.preventDefault();
+
 
     }
 
@@ -182,107 +195,136 @@ const LogIn = () => {
 
 
                 <Col>
-                    <div className='logInForm'>
-                        <h3 className="logInText">{newUser ? 'Create an account':'Log In'}</h3>
-
-                        <form className='formBoth' onSubmit={handleSubmit}>
-
-                            {newUser &&
-                            
-                            <input type="text" onBlur={handleBlur} placeholder="Your First Name" required />
-                            
-                            }
-
-                            <br/>
-
-                            {newUser && 
-                            <input type="text" onBlur={handleBlur} placeholder="Your Last Name" required />
-
-                            }
-                            <br/>
-
-                       
-
-                            <input type="text" onBlur={handleBlur} placeholder="Your email address" name="email" id="" required />
+                    <div className='form-style'>
+                        <div className='logInForm'>
+                            <h3 className="logInText">{newUser ? 'Create an account' : 'Log In'}</h3>
 
 
-                            <br />
+                            <form className='formBoth' onSubmit={handleSubmit}>
+
+                                {newUser &&
+
+                                    <input className="inputText" type="text" onBlur={handleBlur} placeholder="Your First Name" required />
+
+                                }
 
 
-                            <input type="password" onBlur={handleBlur} placeholder='Your password' name="password" id="" required />
+                                <br />
 
-                            <br />
+                                {newUser &&
+                                    <input className="inputText" type="text" onBlur={handleBlur} placeholder="Your Last Name" required />
 
-                            { (! newUser) && 
-
-                                    <input type="checkbox" name="" id ="" />
-                            
-                            
-                            
-                            }
-
-                           
-                        </form>
-
-                        <button> 
-
-                               <Link to='/hotelDetails'>
-                                   {
-                                       newUser ? 'Create an Account' : "Login"
-                                   }
+                                }
+                                <br />
 
 
-                               </Link>
-                           </button>
 
-                           <p> 
-                               {newUser 
+                                <input className="inputText" type="email" onBlur={handleBlur} placeholder="Your email address" name="email" id="" required />
+
+
+                                <br />
+
+                                {
+                                    newUser &&
+
+                                    <input className="inputText" type="password" onBlur={handleBlur} placeholder='Confirm Your password' name="password" id="" required />
+
+                                }
+
+
+                                <input className="inputText" type="password" onBlur={handleBlur} placeholder='Your password' name="password" id="" required />
+
+                                
+                                
+
+
+
+                                <p style={{ marginLeft: '20%' }}>
+
+                                        { (!newUser) &&
+
+                                        <input  type="checkbox" name="Remember Me" id="" />  
+                                        }
+
+                                        
+
+                                                                             
+
+                                    
+
+                                    Remember Me
+                                </p>
                                
-                               ? "Already have an account?Login"
-                               :"Do not have an account ?? Create a new account"
-                               
-                               
-                               
-                               
-                               }
 
-                               <input type='checkbox' onChange={()=> setNewUser(!newUser)} name='' id="" />
+                                <button className='btn btn-block' style={{ backgroundColor: 'goldenrod', width: '80%', borderRadius: '20px', fontSize: '20px', marginLeft: '9%' }} type="submit">
+
+
+                                    {
+                                        newUser ? 'Create an Account' : "Login"
+                                    }
 
 
 
+                                </button>
 
 
 
-                           </p>
+                            </form>
+                            
 
+
+
+                            <p style={{ marginLeft: '18%' }}>
+                                {newUser
+
+                                    ? "Already have an account?Login"
+                                    : "Do not have an account ?? Create a new account"
+
+
+
+
+                                }
+
+                                <input type='checkbox' onChange={() => setNewUser(!newUser)} name='' id="" />
+
+
+
+
+
+
+                            </p>
+
+
+
+
+
+                        </div>
+
+                        <p style={{ color: 'red' }}>{user.error}</p>
+
+
+                        {user.success && <p style={{ color: 'green' }}>User {newUser ? "created" : "Logged in successfully"}</p>}
+                        
+
+
+                        {
+
+                            user.isSignedIn
+
+                                ? <button onClick={signOut}></button>
+                                : <button style={{marginBottom: '2%', height:'40px', backgroundColor: 'white', borderRadius: '20px', width: '300px', lineHeight: '30px' ,marginLeft: '25%' }} onClick={googleSignIn}> <img src={googleLogo} alt="" width='30px' />  Continue With Google</button>
+                        }
+
+
+
+                        
+
+                        <button style={{height:'40px',marginLeft: '25%', backgroundColor: 'white', borderRadius: '20px', width: '300px', lineHeight: '30px' }} onClick={fbSignIn}> <img src={facebookLogo} alt="" width='30px' /> Continue With Facebook</button>
 
 
 
 
                     </div>
-
-                    <p style={{color: 'red'}}>{user.error}</p>
-
-
-                    {user.success && <p style={{color: 'green'}}>User {newUser ?"created" : "Logged in successfully"}</p>}
-
-
-                    {
-
-                        user.isSignedIn
-
-                        ? <button onClick={signOut}></button>
-                        :<button onClick={googleSignIn}> <img src={googleLogo} alt="" width='40px'/>  Continue With Google</button>
-                    }
-
-                    <br></br>
-
-                    <button onClick={fbSignIn}> <img src={facebookLogo} alt="" width='40px'/> Continue With Facebook</button>
-
-                   
-                    
-                    
-                    
 
 
                 </Col>
@@ -297,7 +339,7 @@ const LogIn = () => {
             </Row>
 
 
-         
+
         </section>
     );
 };

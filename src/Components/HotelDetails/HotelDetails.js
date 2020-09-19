@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Col, Container, Navbar, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../../Images/Logo.png';
@@ -6,8 +6,10 @@ import './HotelDetails.css';
 import HotelData from "./HotelData";
 import Hotels from './Hotels';
 import GoogleMap from '../GoogleMap/GoogleMap';
+import { UserContext } from '../../App';
 
 const HotelDetails = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
 
     return (
@@ -36,7 +38,7 @@ const HotelDetails = () => {
                                 <Link className='hotelNav ml-5' to="destination">Destination</Link>
                                 <Link className='hotelNav ml-5' to="blog">Blog</Link>
                                 <Link className='hotelNav ml-5' to="contact">Contact</Link>
-                                <Link to='/login'><Button className='button'>Login</Button></Link>
+                                <Link to='/login'><Button className='button'>{loggedInUser.name}</Button></Link>
                             </Navbar.Collapse>
                         </Navbar>
 
