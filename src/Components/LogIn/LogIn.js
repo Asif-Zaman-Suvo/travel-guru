@@ -219,42 +219,40 @@ const LogIn = () => {
 
 
 
-                                <input className="inputText" type="email" onBlur={handleBlur} placeholder="Your email address" name="email" id="" required />
+                                <input className="inputText" type="email" onBlur={handleBlur} placeholder="Your Email Address" name="email" id="" required />
 
 
                                 <br />
 
+
+                                <input className="inputText" type="password" onBlur={handleBlur} placeholder='Your Password' name="password" id="" required />
+
+
                                 {
-                                    newUser &&
-
-                                    <input className="inputText" type="password" onBlur={handleBlur} placeholder='Confirm Your password' name="password" id="" required />
-
-                                }
-
-
-                                <input className="inputText" type="password" onBlur={handleBlur} placeholder='Your password' name="password" id="" required />
-
-                                
-                                
-
-
-
-                                <p style={{ marginLeft: '20%' }}>
-
-                                        { (!newUser) &&
-
-                                        <input  type="checkbox" name="Remember Me" id="" />  
-                                        }
-
-                                        
-
-                                                                             
+                                    newUser && <input className="inputText" type="password" onBlur={handleBlur} placeholder='Confirm Your password' name="password" id="" required />
 
                                     
 
+
+
+                                }
+
+                                <p style={{ marginLeft: '20%' }}>
+
+                                    {(!newUser) &&
+
+                                        <input type="checkbox" name="Remember Me" id="" />
+                                    }
+
+
+
+
+
+
+
                                     Remember Me
                                 </p>
-                               
+
 
                                 <button className='btn btn-block' style={{ backgroundColor: 'goldenrod', width: '80%', borderRadius: '20px', fontSize: '20px', marginLeft: '9%' }} type="submit">
 
@@ -270,7 +268,7 @@ const LogIn = () => {
 
 
                             </form>
-                            
+
 
 
 
@@ -304,7 +302,7 @@ const LogIn = () => {
 
 
                         {user.success && <p style={{ color: 'green' }}>User {newUser ? "created" : "Logged in successfully"}</p>}
-                        
+
 
 
                         {
@@ -312,14 +310,14 @@ const LogIn = () => {
                             user.isSignedIn
 
                                 ? <button onClick={signOut}></button>
-                                : <button style={{marginBottom: '2%', height:'40px', backgroundColor: 'white', borderRadius: '20px', width: '300px', lineHeight: '30px' ,marginLeft: '25%' }} onClick={googleSignIn}> <img src={googleLogo} alt="" width='30px' />  Continue With Google</button>
+                                : <button style={{ marginBottom: '2%', height: '40px', backgroundColor: 'white', borderRadius: '20px', width: '300px', lineHeight: '30px', marginLeft: '25%' }} onClick={googleSignIn}> <img src={googleLogo} alt="" width='30px' />  Continue With Google</button>
                         }
 
 
 
-                        
 
-                        <button style={{height:'40px',marginLeft: '25%', backgroundColor: 'white', borderRadius: '20px', width: '300px', lineHeight: '30px' }} onClick={fbSignIn}> <img src={facebookLogo} alt="" width='30px' /> Continue With Facebook</button>
+
+                        <button style={{ height: '40px', marginLeft: '25%', backgroundColor: 'white', borderRadius: '20px', width: '300px', lineHeight: '30px' }} onClick={fbSignIn}> <img src={facebookLogo} alt="" width='30px' /> Continue With Facebook</button>
 
 
 

@@ -40,12 +40,12 @@
 }
 
 .form-control{
-    background-color:#505052;
-    color: white;
+   
+    color: #000000;
 }
 
 ::-webkit-input-placeholder{
-    color:white !important;
+    color:black !important;
  }
 
  .navBar{
